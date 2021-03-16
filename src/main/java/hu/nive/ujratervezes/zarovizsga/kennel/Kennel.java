@@ -17,15 +17,26 @@ public class Kennel {
     }
 
     public Dog findByName(String name) {
-        return null;
+        for (Dog dog : dogs) {
+            if (dog.getName().equals(name)) {
+                return dog;
+            }
+        }
+        throw new IllegalArgumentException("Dog not found.");
     }
 
     public void playWith(String name, int hours) {
-
+        findByName(name).play(hours);
     }
 
     public List<String> getHappyDogNames(int minHappiness) {
-        return null;
+        List<String> happyDogs = new ArrayList<>();
+        for (Dog dog : dogs) {
+            if (dog.getHappiness() > minHappiness) {
+                happyDogs.add(dog.getName());
+            }
+        }
+        return happyDogs;
     }
 
     public List<Dog> getDogs() {
